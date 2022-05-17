@@ -11286,4 +11286,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.custom-class-1 {
+    background-image: url(/images/Support1.jpg?a96ec7e2a01ac29e7487055b3ef3215b);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
 
+.custom-class-2 {
+    background-image: url(/images/JoinUs1.jpg?cbfce336455461a6c9bedcadde433a27);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    border-radius: 0 10px 0 10px;
+}

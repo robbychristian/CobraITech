@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Mail;
 // GUEST FUNCTIONS
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome.home');
 Route::get('/joinus', [WelcomeController::class, 'joinUs'])->name('welcome.joinus');
+Route::get('/support', [WelcomeController::class, 'support'])->name('welcome.support');
 Route::post('/submitapplication', [WelcomeController::class, 'sendApplication'])->name('welcome.submitapplication');
 
 Auth::routes();

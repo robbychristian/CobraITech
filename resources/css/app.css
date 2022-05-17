@@ -1,0 +1,14 @@
+.custom-class-1 {
+    background-image: url('../../public/images/Support1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.custom-class-2 {
+    background-image: url('../../public/images/JoinUs1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    border-radius: 0 10px 0 10px;
+}

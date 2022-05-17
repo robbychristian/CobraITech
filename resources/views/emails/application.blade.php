@@ -1,12 +1,12 @@
-@component('mail::message')
-    # Hi, Applicant!
+# Hi, Applicant!
 
-    The body of your message.
+{{ $data['message'] }}
 
-    @component('mail::button', ['url' => ''])
-        Button Text
-    @endcomponent
-
-    Thanks,<br>
-    {{ config('app.name') }}
+@component('mail::button', ['url' => ''])
+    Button Text
 @endcomponent
+
+<a href="http://127.0.0.1:8000/api/downloadpdf/{{ $pdf }}/{{ $data['email'] }}">PRESS PLS</a>
+
+Thanks,<br>
+{{ config('app.name') }}

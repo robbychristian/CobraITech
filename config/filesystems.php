@@ -38,8 +38,13 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
+        ],
+
+        'curriculum_vitae' => [
+            'driver' => 'local',
+            'root' => public_path() . '/curriculum_vitae'
         ],
 
         's3' => [

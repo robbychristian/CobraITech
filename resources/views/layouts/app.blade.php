@@ -47,29 +47,37 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mx-5">
-                        <li class="nav-item">
-                            <a href="/" id="Home" class="nav-link mx-2">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" id="AboutUs" class="nav-link mx-2">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" id="Services" class="nav-link mx-2">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" id="Updates" class="nav-link mx-2">Updates</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" id="Support" class="nav-link mx-2">Support</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" id="Partners" class="nav-link mx-2">Partners & Clients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('welcome.joinus') }}" id="JoinUs" class="nav-link mx-2">Join Us</a>
-                        </li>
-                    </ul>
+                    @auth
+                        <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                                <a href="/" id="Home" class="nav-link mx-2">Dashboard</a>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="navbar-nav mx-5">
+                            <li class="nav-item">
+                                <a href="/" id="Home" class="nav-link mx-2">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" id="AboutUs" class="nav-link mx-2">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" id="Services" class="nav-link mx-2">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" id="Updates" class="nav-link mx-2">Updates</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('welcome.support') }}" id="Support" class="nav-link mx-2">Support</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" id="Partners" class="nav-link mx-2">Partners & Clients</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('welcome.joinus') }}" id="JoinUs" class="nav-link mx-2">Join Us</a>
+                            </li>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -96,7 +104,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

@@ -12,6 +12,7 @@ class ApplicationLetter extends Model
     protected $fillable = [
         'name',
         'email',
+        'message',
         'job_category',
         'curriculum_vitae'
     ];

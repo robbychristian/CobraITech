@@ -1,10 +1,12 @@
 //  JOIN US PAGE
 import swal from "sweetalert";
 
+// FOR JOIN US
 let validEmail = false;
 let validName = false;
 let validJob = false;
 let validFile = false;
+let validMessage = false;
 
 $("#email").on("change", function () {
     if (
@@ -44,6 +46,17 @@ $("#job").on("change", function () {
         $("#job").addClass("is-valid");
     }
 });
+$("#message").on("change", function () {
+    if ($("#message").val() == "") {
+        validMessage = false;
+        $("#message").addClass("is-invalid");
+        $("#message").removeClass("is-valid");
+    } else {
+        validMessage = true;
+        $("#message").removeClass("is-invalid");
+        $("#message").addClass("is-valid");
+    }
+});
 $("#curriculumVitae").on("change", function () {
     if ($("#curriculumVitae").val() == "") {
         validFile = false;
@@ -57,7 +70,8 @@ $("#submitApplication").on("click", function () {
         validEmail === true &&
         validName === true &&
         validJob === true &&
-        validFile === true
+        validFile === true &&
+        validMessage === true
     ) {
         swal({
             icon: "warning",
@@ -87,3 +101,5 @@ $("#submitApplication").on("click", function () {
         });
     }
 });
+
+//FOR SUPPORT

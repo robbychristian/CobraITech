@@ -11,14 +11,19 @@ class UserApplication extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $filename;
+    public $subject;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($filename, $subject, $data)
     {
-        //
+        $this->filename = public_path() . '/' . $filename;
+        $this->subject = $subject;
+        $this->data = $data;
     }
 
     /**
@@ -28,8 +33,9 @@ class UserApplication extends Mailable
      */
     public function build()
     {
-        $test = 'nice';
-        return $this->markdown('emails.application')
-            ->with('test', $test);
+        // return $this->markdown('emails.application')
+        //     ->subject($this->subject)
+        //     ->attach($this->filename);
+        return $this->from('numzy03@gmail.com', 'Cobra iTech Services Inc.')->subject($this->subject)->markdown('emails.application')->with('data', $this->data)->with('pdf', $this->filename);
     }
 }
