@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicationLettersTable extends Migration
+class CreateUpdatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateApplicationLettersTable extends Migration
      */
     public function up()
     {
-        Schema::create('application_letters', function (Blueprint $table) {
+        Schema::create('updates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('message');
-            $table->string('job_category');
-            $table->string('curriculum_vitae');
+            $table->string('publisher');
+            $table->string('title');
+            $table->string('body');
+            $table->string('img_heading');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateApplicationLettersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application_letters');
+        Schema::dropIfExists('updates');
     }
 }

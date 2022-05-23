@@ -13,17 +13,19 @@ class UserApplication extends Mailable
 
     public $filename;
     public $subject;
+    public $sender;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($filename, $subject, $data)
+    public function __construct($filename, $subject, $data, $sender)
     {
-        $this->filename = public_path() . '/' . $filename;
+        $this->filename = $filename;
         $this->subject = $subject;
         $this->data = $data;
+        $this->sender = $sender;
     }
 
     /**
@@ -36,6 +38,6 @@ class UserApplication extends Mailable
         // return $this->markdown('emails.application')
         //     ->subject($this->subject)
         //     ->attach($this->filename);
-        return $this->from('numzy03@gmail.com', 'Cobra iTech Services Inc.')->subject($this->subject)->markdown('emails.application')->with('data', $this->data)->with('pdf', $this->filename);
+        return $this->to($this->sender)->from('emailsenderdebugger@gmail.com', 'Cobra iTech Services Corporation')->subject($this->subject)->markdown('emails.application')->with('data', $this->data)->with('pdf', $this->filename);
     }
 }

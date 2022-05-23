@@ -12,3 +12,27 @@
     height: 100vh;
     border-radius: 0 10px 0 10px;
 }
+.custom-class-3 {
+    background-image: url('../../public/images/Update1.jpg');
+    background-size: cover;
+    background-position: left;
+    width: 100%;
+    height: 60vh;
+}
+
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidenavbar {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.page-content-show {
+    min-width: 100%;
+}
+
+.page-content-hide{
+    min-width: 90%;
+}

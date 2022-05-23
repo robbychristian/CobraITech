@@ -8,13 +8,44 @@ use App\Models\ApplicationLetter;
 use Mail;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\File;
+use App\Models\visitors;
+//support page
 use App\Mail\UserApplication;
+use App\Mail\Support;
+use App\Models\Queries;
 
 class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $ip = request()->ip();
+        $request = new Request([
+            'ip_address' => $ip
+        ]);
+
+        $is_unique = DB::table('visitors')
+            ->where('ip_address', $request->ip_address)
+            ->count();
+
+        if ($is_unique != 1) {
+            visitors::create(['ip_address' => $ip]);
+            return view('welcome');
+        } else {
+            return view('welcome');
+        }
+
+        // $valid = $request->validate([
+        //     'ip_address' => 'unique:visitors,ip_address'
+        // ]);
+        // if ($valid == false) {
+        //     dd(false);
+        // } else {
+        // }
+
+        // $data['ip'] = $ip;
+        // $validator = Validator::make($data, [
+        //     'ip' => 'required|unique:visitors,ip_address'
+        // ]);
     }
 
     public function joinUs()
@@ -27,8 +58,18 @@ class WelcomeController extends Controller
         return view('Welcome.Support');
     }
 
+    public function updates()
+    {
+        $blogs = DB::table('updates')
+            ->get();
+        return view('Welcome.Updates')->with('blogs', $blogs);
+    }
+
     public function sendApplication(Request $request)
     {
+        $validate = $request->validate([
+            'email' => 'unique:application_letters',
+        ]);
         if ($request->hasFile('curriculum_vitae')) {
             $file = $request->file('curriculum_vitae')->getClientOriginalName();
             $path = public_path('storage/applications' . '/' . $request->email . '/' . $file);
@@ -46,7 +87,7 @@ class WelcomeController extends Controller
             $data['email'] = $request->email;
             $data['message'] = $request->message;
             $data['job_category'] = $request->job_category;
-            Mail::to($myEmail)->send(new UserApplication(public_path($path), $request->name . " Application Letter", $data));
+            Mail::to($myEmail)->send(new UserApplication($path, $request->name . " Application Letter", $data, $myEmail));
             return redirect('/joinus')->with('success', 'Successfully sent your application!');
         } else {
             dd('false');
@@ -57,5 +98,21 @@ class WelcomeController extends Controller
     {
         $path = public_path('applications') . '/' . $email . '/' . $pdf;
         return response()->download($path);
+    }
+
+    public function sendQuery(Request $request)
+    {
+        $query = Queries::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'status' => 'Pending',
+            'message' => $request->message
+        ]);
+        $myEmail = $query->email;
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['message'] = $request->message;
+        Mail::to($myEmail)->send(new Support("Question from " . $request->name, $data, $myEmail));
+        return redirect('/support')->with("success", 'Successfully sent your question!');
     }
 }

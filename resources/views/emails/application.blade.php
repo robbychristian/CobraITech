@@ -1,12 +1,10 @@
-# Hi, Applicant!
+<div class="fs-4">
+    Good Day, HR Representative!
+    <br><br>
+    I am {{ $data['name'] }} applying for the position of {{ $data['job_category'] }} in your company.
+    {{ $data['message'] }}
+    <br>
+</div>
 
-{{ $data['message'] }}
-
-@component('mail::button', ['url' => ''])
-    Button Text
-@endcomponent
-
-<a href="http://127.0.0.1:8000/api/downloadpdf/{{ $pdf }}/{{ $data['email'] }}">PRESS PLS</a>
-
-Thanks,<br>
-{{ config('app.name') }}
+Regards,<br>
+{{ $data['name'] }}

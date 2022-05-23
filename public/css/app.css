@@ -11300,3 +11300,27 @@ textarea.form-control-lg {
     height: 100vh;
     border-radius: 0 10px 0 10px;
 }
+.custom-class-3 {
+    background-image: url(/images/Update1.jpg?7034d108ea3b4680ced350f9f0fda02e);
+    background-size: cover;
+    background-position: left;
+    width: 100%;
+    height: 60vh;
+}
+
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidenavbar {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.page-content-show {
+    min-width: 100%;
+}
+
+.page-content-hide{
+    min-width: 90%;
+}
