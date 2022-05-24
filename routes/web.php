@@ -54,6 +54,9 @@ Route::get('/manageadmin', [ManageAdmin::class, 'index'])->name('admin.manageadm
 Route::post('/addAdmin', [ManageAdmin::class, 'addAdmin'])->name('admin.addadmin');
 Route::post('/deleteAdmin', [ManageAdmin::class, 'deleteAdmin'])->name('admin.deleteadmin');
 
+Route::get('/emailtemplate', function () {
+    return view('mail.reply-to-query');
+});
 
 // Route::get('/email', function () {
 //     Mail::to('robbychristiandeleon@gmail.com')->send(new UserApplication);

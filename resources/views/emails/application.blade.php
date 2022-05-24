@@ -1,10 +1,16 @@
-<div class="fs-4">
-    Good Day, HR Representative!
-    <br><br>
-    I am {{ $data['name'] }} applying for the position of {{ $data['job_category'] }} in your company.
-    {{ $data['message'] }}
-    <br>
-</div>
+@extends('layouts.email-template')
 
-Regards,<br>
-{{ $data['name'] }}
+@section('content')
+    <div>Dear HR Representative,</div>
+    <div style="margin: 1.5rem 0">
+        I am {{ $data['name'] }} applying for the position of {{ $data['job_category'] }} in your company.
+        <br>
+        {{ $data['message'] }}
+    </div>
+    <div>
+        Regards,
+    </div>
+    <div style="margin-top: 1rem">
+        {{ $data['name'] }}
+    </div>
+@endsection

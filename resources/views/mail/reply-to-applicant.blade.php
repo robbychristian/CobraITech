@@ -1,7 +1,14 @@
-@component('mail::message')
-    <div class="fs-6">Dear {{ $data['name'] }},</div>
-    <div class="fs-6 mt-5">{{ $data['message'] }}</div>
+@extends('layouts.email-template')
 
-    Regards,
-    HR Representative
-@endcomponent
+@section('content')
+    <div>Dear {{ $data['name'] }},</div>
+    <div style="margin: 1.5rem 0">
+        {{ $data['message'] }}
+    </div>
+    <div>
+        Regards,
+    </div>
+    <div style="margin-top: 1rem">
+        HR Representative
+    </div>
+@endsection
