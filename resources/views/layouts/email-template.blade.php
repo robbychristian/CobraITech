@@ -7,12 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
-<body style="font-family: Arial, Helvetica, sans-serif; color: #484848; background-color: #F2F3F7">
-    <div style="margin: 0 auto; background-color: #fff; width: 33rem; padding: 1rem 0">
+<body style="font-family: Arial, Helvetica, sans-serif; color: #484848; background-color: #F2F3F7; padding: 1rem">
+    <div style="margin: 1rem auto; background-color: #fff; width: 33rem; padding: 1rem 0">
         <div style="text-align: center; font-weight: 700; font-size: 1.5rem;">
             Cobra iTech Services Corporation
         </div>
-        <img src="{{ public_path('images/EmailTemplate1.png') }}" style="margin: 0 auto; display: block" width="300">
+        <img src="https://github.com/robbychristian/CobraITech/blob/master/public/images/EmailTemplate1.png?raw=true"
+            style="margin: 0 auto; display: block" width="300">
         <div style="padding: 1rem">
             @yield('content')
         </div>

@@ -120,6 +120,10 @@
                             <label for="exampleInputPassword1" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control">
                         </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control">
+                        </div>
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
