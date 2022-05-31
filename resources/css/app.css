@@ -1,4 +1,4 @@
-.custom-class-1 {
+/* .custom-class-1 {
     background-image: url('../../public/images/Support1.jpg');
     background-size: cover;
     background-position: center;
@@ -18,7 +18,71 @@
     background-position: left;
     width: 100%;
     height: 60vh;
-}
+} */
+
+body {
+    font-family: 'Poppins';
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+    background-color: #fff;
+  }
+  
+  
+  .custom-txt-color {
+   color: #0096FF;
+  }
+  
+  .btn-custom {
+    background-color: #0096FF;
+    color: #fff;
+    width: 8rem;
+  }
+  
+  .btn-custom:hover {
+    background-color: #0096FF;
+    color: #fff;
+    opacity: 0.8;
+  }
+  
+  .custom-img {
+    border-radius: 4rem 0rem 4rem 0rem;
+    box-shadow: 1rem 1rem #0096FF;
+  }
+  
+  .btn-custom-card {
+    background-color: #0096FF;
+    color: #fff;
+  }
+  
+  .btn-custom-card:hover {
+    background-color: #0096FF;
+    color: #fff;
+    opacity: 0.8;
+  }
+  
+  .bg-custom {
+    background-color: #0096FF;
+  }
+  
+  #scroll-btn {
+    display: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 3rem; 
+    z-index: 99; 
+    background-color: #0096FF; 
+    color: white;
+    cursor: pointer;
+  }
+  
+  #scroll-btn:hover {
+    opacity: 0.8;
+  }
+  
+  #map{
+    height: 50vh;
+  }
 
 #wrapper {
     overflow-x: hidden;
@@ -35,4 +99,8 @@
 
 .page-content-hide{
     min-width: 90%;
+}
+
+hr {
+  flex-grow: 1;
 }

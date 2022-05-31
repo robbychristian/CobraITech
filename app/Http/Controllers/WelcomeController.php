@@ -27,11 +27,20 @@ class WelcomeController extends Controller
             ->where('ip_address', $request->ip_address)
             ->count();
 
+        $threeUpdates = DB::table('updates')
+            ->orderBy('created_at', 'asc')
+            ->take(3)
+            ->get();
+
         if ($is_unique != 1) {
             visitors::create(['ip_address' => $ip]);
-            return view('welcome');
+            return view('welcome', [
+                'updates' => $threeUpdates
+            ]);
         } else {
-            return view('welcome');
+            return view('welcome', [
+                'updates' => $threeUpdates
+            ]);
         }
 
         // $valid = $request->validate([

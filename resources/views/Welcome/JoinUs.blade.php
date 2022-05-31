@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
     <div class="row d-flex justify-content-around align-items-center">
         @if (Session::has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -25,53 +26,102 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="col-xs-12 col-md-6 custom-class-2">
-        </div>
-        <div class="col-xs-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
-            <form id="applicationForm" action="/submitapplication" method="POST" enctype="multipart/form-data"
-                class="p-3" style="height: 100%; width: 90%">
-                @csrf
-                @method('POST')
-                <div class="fs-1 text-dark fw-bold">Send your application below</div>
-                <div class="fs-6 fw-bold mb-3 fst-italic" style="color: #a0a0a0">Lorem, ipsum dolor sit amet consectetur
-                    adipisicing elit. Blanditiis
-                    consequuntur rerum labore ad excepturi repellendus eos officiis unde id! Doloribus ea enim rem atque
-                    veritatis neque nobis non iste sapiente!</div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name <span
-                            class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="name" name="name">
+        <!-- Start of Content -->
+        <section id="join-us" class="my-5">
+
+            <div class="container">
+                <small class="fw-bold custom-txt-color">Join Us</small>
+                <h1 class="display-6 fw-bold my-5">Be a Member of Our Team</h1>
+                <div class="row align-items-start">
+                    <div class="col-lg-6 border border-top-0 border-start-0 border-bottom-0 pe-5">
+                        <h6 class="fw-bold">Send Your Application</h6>
+                        <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi quas
+                            fugit est earum deleniti distinctio eaque ad quibusdam adipisci aperiam?</p>
+
+                        <!-- Support Form -->
+                        <form action="{{ route('welcome.submitapplication') }}" id="applicationForm"
+                            class="my-4" enctype="multipart/form-data" method="POST">
+                            @csrf
+                            @method('POST')
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label fw-bold">Name</label>
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Enter your name">
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label fw-bold">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email"
+                                        placeholder="Enter your email">
+                                </div>
+                            </div>
+
+
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <label for="" class="form-label fw-bold">Job Category</label>
+                                    <select class="form-select" name="job_category" id="job"
+                                        aria-label="Default select example">
+                                        <option selected>Select Your Job</option>
+                                        <option value="Consultant">Consultant</option>
+                                        <option value="Data Scientist">Data Scientist</option>
+                                        <option value="Designer">Designer</option>
+                                        <option value="Developer">Developer</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label fw-bold">Curriculum Vitae</label>
+                                    <input class="form-control" name="curriculum_vitae" accept=".pdf,.docx"
+                                        id="curriculumVitae" type="file" id="curriculumVitae">
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label for="" class="form-label fw-bold">Message</label>
+                                <textarea class="form-control" name="message" id="message" rows="7" placeholder="Enter your message"></textarea>
+                            </div>
+
+                            <button type="button" id="submitApplication"
+                                class="btn btn-custom rounded-pill mt-4 float-end">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 ps-5">
+                        <div class="call-us">
+                            <h6 class="fw-bold">Call Us</h6>
+                            <p class="text-muted w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, facere.
+                            </p>
+                            <p class="custom-txt-color">
+                                <i class="bi bi-telephone-fill me-3"></i>(02) 577 4822
+                            </p>
+                        </div>
+                        <div class="visit-us">
+                            <h6 class="fw-bold">Visit Us</h6>
+                            <p class="text-muted w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, facere.
+                            </p>
+                            <p class="custom-txt-color">
+                                <i class="bi bi-geo-alt-fill me-3"></i>Suite 402, Jade Place Condominium,
+                                33 Visayas Avenue, Bgy. Vasra, QC
+                            </p>
+                        </div>
+                        <div class="email-us">
+                            <h6 class="fw-bold">Email Us</h6>
+                            <p class="text-muted w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, facere.
+                            </p>
+                            <p class="custom-txt-color">
+                                <i class="bi bi-envelope-fill me-3"></i>cobraitechservices@gmail.com
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address <span
-                            class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Message <span
-                            class="text-danger">*</span></label>
-                    <textarea rows="4" class="form-control" id="message" aria-describedby="emailHelp" name="message"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Job Category <span
-                            class="text-danger">*</span></label>
-                    <select class="form-select" id="job" name="job_category">
-                        <option selected value="Consultant">Consultant</option>
-                        <option value="Data Scientist">Data Scientist</option>
-                        <option value="Designer">Designer</option>
-                        <option value="Developer">Developer</option>
-                    </select>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Curriculum Vitae <span class="text-danger">*</span></label>
-                    <br>
-                    <input type="file" name="curriculum_vitae" id="curriculumVitae" accept="application/pdf,application">
-                </div>
-                <button type="button" class="btn btn-primary" id="submitApplication">Submit</button>
-            </form>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/forms.js') }}"></script>
-@endsection
+                <iframe class="mt-5" style="border:0; width: 100%; height: 270px;"
+                    src="https://maps.google.com/maps?q=cobra%20itech&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <script script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/forms.js') }}"></script>
+    @endsection

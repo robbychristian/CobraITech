@@ -20,13 +20,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -35,8 +32,11 @@
 <body>
     <div class="d-flex" id="wrapper">
         <div class="border-end" id="sidenavbar">
-            <div class="sidebar-heading text-light" style="background-color: #272f56; padding: 15.3px">
-                Logo
+            <div class="sidebar-heading text-light" style="background-color: padding: 15.3px">
+                <a class="navbar-brand fw-bold" href="#">
+                    <img src="{{ asset('images/cobra-logo.png') }}" alt="" style="width: 3rem">
+                    Cobra Itech
+                </a>
             </div>
             <div class="list-group list-group-flush h-75">
                 <div class="d-flex flex-column h-100">
